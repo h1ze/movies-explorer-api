@@ -30,8 +30,10 @@
     "celebrate": "^15.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-winston": "^4.2.0",
     "helmet": "^7.0.0",
     "mongoose": "^7.2.1",
-    "validator": "^13.9.0"
+    "validator": "^13.9.0",
+    "winston": "^3.9.0"
   }
 }
