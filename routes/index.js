@@ -1,5 +1,6 @@
 const mainRouter = require('express').Router();
 const NotFoundError = require('../errors/not-found-err');
+const auth = require('../middlewares/auth');
 
 // Импорт роутеров
 const signup = require('./signup');
@@ -10,6 +11,9 @@ const signin = require('./signin');
 mainRouter.use('/signup', signup);
 mainRouter.use('/signin', signin);
 
+mainRouter.use(auth); // Подключение авторизации
+
+// Роуты с авторизацией
 mainRouter.use('/users/me', users);
 mainRouter.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));

@@ -1,4 +1,4 @@
-const { AUTH_ERROR_CODE } = require('../utils/config');
+const { AUTH_ERROR_CODE } = require('../utils/constants');
 
 class AuthError extends Error {
   constructor(message) {
