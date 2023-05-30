@@ -7,7 +7,13 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
     // аутентификация успешна! пользователь в переменной user
       const token = generateToken({ _id: user._id });
-      res.send({ token });
+      // отправим токен, браузер сохранит его в куках
+      res.cookie('jwt', token, {
+        maxAge: 3600000 * 24 * 7,
+        httpOnly: true,
+        sameSite: true,
+      })
+        .end(); // если у ответа нет тела, можно использовать метод end
     })
     .catch(next);
 };

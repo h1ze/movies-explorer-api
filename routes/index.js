@@ -1,4 +1,5 @@
 const mainRouter = require('express').Router();
+const cookieParser = require('cookie-parser');
 const NotFoundError = require('../errors/not-found-err');
 const auth = require('../middlewares/auth');
 
@@ -6,6 +7,8 @@ const auth = require('../middlewares/auth');
 const signup = require('./signup');
 const users = require('./users');
 const signin = require('./signin');
+
+mainRouter.use(cookieParser()); // подключаем парсер кук как мидлвэр
 
 // Роуты без авторизации
 mainRouter.use('/signup', signup);

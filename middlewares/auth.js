@@ -5,19 +5,16 @@ const AuthError = require('../errors/auth-err');
 module.exports = (req, res, next) => {
   let payload;
   try {
-  // достаём авторизационный заголовок
-    const { authorization } = req.headers;
+  // достаём токен
+    const { jwt } = req.cookies;
 
-    // убеждаемся, что он есть или начинается с Bearer
-    if (!authorization || !authorization.startsWith('Bearer ')) {
+    // убеждаемся, что он есть
+    if (!jwt) {
       throw new AuthError('Необходима авторизация');
     }
 
-    // Убираем Bearer, оставляем только строку с токеном
-    const token = authorization.replace('Bearer ', '');
-
     // верифицируем токен
-    payload = checkToken(token);
+    payload = checkToken(jwt);
   } catch (err) {
     // отправим ошибку, если не получилось
     return next(new AuthError('Проблемы с авторизацией'));
