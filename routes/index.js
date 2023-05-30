@@ -7,6 +7,7 @@ const auth = require('../middlewares/auth');
 const signup = require('./signup');
 const users = require('./users');
 const signin = require('./signin');
+const movies = require('./movies');
 
 mainRouter.use(cookieParser()); // подключаем парсер кук как мидлвэр
 
@@ -18,6 +19,8 @@ mainRouter.use(auth); // Подключение авторизации
 
 // Роуты с авторизацией
 mainRouter.use('/users/me', users);
+mainRouter.use('/movies', movies);
+
 mainRouter.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
