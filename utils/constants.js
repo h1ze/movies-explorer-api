@@ -6,14 +6,15 @@ const FORBIDDEN_ERROR_CODE = 403;
 const NOT_FOUND_ERROR_CODE = 404;
 const CONFLICT_ERROR_CODE = 409;
 
+// Регулярное выражение для валидации URL
+
+const REG_EXP = /^https?:\/\/(www\.)?([a-z0-9_-]+)(\.[a-z0-9_-]+).+/i;
+
 module.exports = {
   BAD_REQUEST_ERROR_CODE,
   AUTH_ERROR_CODE,
   FORBIDDEN_ERROR_CODE,
   NOT_FOUND_ERROR_CODE,
   CONFLICT_ERROR_CODE,
+  REG_EXP,
 };
-
-const REG_EXP = /^https?:\/\/(www\.)?([a-z0-9_-]+)(\.[a-z0-9_-]+).+/i;
-
-module.exports = REG_EXP;

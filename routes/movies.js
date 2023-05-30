@@ -1,6 +1,6 @@
 const moviesRouter = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const REG_EXP = require('../utils/constants');
+const { REG_EXP } = require('../utils/constants');
 
 const {
   createMovie, deleteMoviedByID, getMovies,
@@ -19,13 +19,13 @@ moviesRouter.post('/', celebrate({
   body: Joi.object().keys({
     country: Joi.string().required(),
     director: Joi.string().required(),
-    duration: Joi.number().required(),
+    duration: Joi.number().integer().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().required().pattern(REG_EXP),
     trailerLink: Joi.string().required().pattern(REG_EXP),
     thumbnail: Joi.string().required().pattern(REG_EXP),
-    movieId: Joi.number().required(),
+    movieId: Joi.number().integer().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),
