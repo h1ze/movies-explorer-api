@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const cors = require('cors');
+const corsOptions = require('./utils/corsOptions');
 
 const { PORT, DATABASE } = require('./utils/config');
 const mainRouter = require('./routes');
@@ -17,10 +19,12 @@ mongoose.connect(DATABASE, {
 });
 
 app.use(helmet());
+app.use(cors(corsOptions)); // Подключаем CORS
+app.options('*', cors()); // Подключаем CORS Pre-Flight
 
 app.use(requestLogger); // подключаем логгер запросов до всех обработчиков роутов
 
-app.use('/', mainRouter);
+app.use('/', mainRouter); // подключаем главный роутер приложения
 
 // обработчики ошибок
 
