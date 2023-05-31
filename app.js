@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cors = require('cors');
 const corsOptions = require('./utils/corsOptions');
+const { limiter } = require('./middlewares/limiter');
 
 const { PORT, DATABASE } = require('./utils/config');
-const mainRouter = require('./routes');
+const mainRouter = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const mainErorHandler = require('./middlewares/mainErorHandler');
 
@@ -19,6 +20,7 @@ mongoose.connect(DATABASE, {
 });
 
 app.use(helmet());
+app.use(limiter);
 app.use(cors(corsOptions)); // Подключаем CORS
 app.options('*', cors()); // Подключаем CORS Pre-Flight
 
