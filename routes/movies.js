@@ -8,10 +8,10 @@ const {
 
 moviesRouter.get('/', getMovies);
 
-moviesRouter.delete('/:movieId', celebrate({
-  // валидируем cardId
+moviesRouter.delete('/:movieDbId', celebrate({
+  // валидируем movieId
   params: Joi.object().keys({
-    movieId: Joi.string().required().length(24).hex(),
+    movieDbId: Joi.string().required().length(24).hex(),
   }),
 }), deleteMoviedByID);
 

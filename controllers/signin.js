@@ -13,7 +13,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       })
-        .end(); // если у ответа нет тела, можно использовать метод end
+        .send({ message: 'Успешный логин' }); // если у ответа нет тела, можно использовать метод end
     })
     .catch(next);
 };

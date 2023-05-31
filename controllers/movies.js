@@ -41,7 +41,7 @@ module.exports.createMovie = (req, res, next) => {
 };
 
 module.exports.deleteMoviedByID = (req, res, next) => {
-  Movie.findById(req.params.movieId)
+  Movie.findById(req.params.movieDbId)
     .orFail()
     .then((movie) => {
       if (movie.owner._id.toString() !== req.user._id) {
@@ -55,7 +55,7 @@ module.exports.deleteMoviedByID = (req, res, next) => {
       if (err instanceof CastError) {
         next(new BadRequestError('Некорректные данные при запросе'));
       } else if (err instanceof DocumentNotFoundError) {
-        next(new NotFoundError(`Не найден фильм с ID ${req.params.movieId}`));
+        next(new NotFoundError(`Не найден фильм с ID ${req.params.movieDbId}`));
       } else {
         next(err);
       }
