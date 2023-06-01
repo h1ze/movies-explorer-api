@@ -6,7 +6,7 @@ const corsOptions = {
     if (ALLOWED_CORS.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      callback(new ForbiddenError('Доступ запрещен CORS'));
+      callback(new ForbiddenError());
     }
   },
 };

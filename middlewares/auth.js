@@ -9,14 +9,14 @@ module.exports = (req, res, next) => {
 
     // убеждаемся, что он есть
     if (!jwt) {
-      throw new AuthError('Необходима авторизация');
+      throw new AuthError();
     }
 
     // верифицируем токен
     payload = checkToken(jwt);
   } catch (err) {
     // отправим ошибку, если не получилось
-    return next(new AuthError('Проблемы с авторизацией'));
+    return next(new AuthError());
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса

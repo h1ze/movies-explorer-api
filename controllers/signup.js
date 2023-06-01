@@ -19,9 +19,9 @@ module.exports.createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err instanceof ValidationError) {
-        next(new BadRequestError('Некорректные данные при запросе'));
+        next(new BadRequestError());
       } else if (err.code === 11000) {
-        next(new ConflictError('Email должен быть уникальным'));
+        next(new ConflictError());
       } else {
         next(err);
       }

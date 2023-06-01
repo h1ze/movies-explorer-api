@@ -12,9 +12,9 @@ module.exports.getUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err instanceof DocumentNotFoundError) {
-        next(new NotFoundError(`Пользователь с ID ${req.user._id} не найден.`));
+        next(new NotFoundError());
       } else if (err instanceof CastError) {
-        next(new BadRequestError('Некорректные данные при запросе'));
+        next(new BadRequestError());
       } else {
         next(err);
       }
@@ -31,11 +31,11 @@ module.exports.updateUser = (req, res, next) => {
     .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err instanceof ValidationError) {
-        next(new BadRequestError('Некорректные данные при запросе'));
+        next(new BadRequestError());
       } else if (err instanceof DocumentNotFoundError) {
-        next(NotFoundError('Запрашиваемый пользователь не найден'));
+        next(NotFoundError());
       } else if (err.code === 11000) {
-        next(new ConflictError('Email должен быть уникальным'));
+        next(new ConflictError());
       } else {
         next(err);
       }

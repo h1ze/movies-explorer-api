@@ -33,7 +33,7 @@ module.exports.createMovie = (req, res, next) => {
     .then((movie) => res.status(201).send({ data: movie }))
     .catch((err) => {
       if (err instanceof ValidationError) {
-        next(new BadRequestError('Некорректные данные при запросе'));
+        next(new BadRequestError());
       } else {
         next(err);
       }
@@ -45,7 +45,7 @@ module.exports.deleteMoviedByID = (req, res, next) => {
     .orFail()
     .then((movie) => {
       if (movie.owner._id.toString() !== req.user._id) {
-        throw new ForbiddenError('Нельзя удалить чужие фильмы!');
+        throw new ForbiddenError();
       }
       movie.deleteOne()
         .then(() => res.send({ message: 'Фильм успешно удален' }))
@@ -53,9 +53,9 @@ module.exports.deleteMoviedByID = (req, res, next) => {
     })
     .catch((err) => {
       if (err instanceof CastError) {
-        next(new BadRequestError('Некорректные данные при запросе'));
+        next(new BadRequestError());
       } else if (err instanceof DocumentNotFoundError) {
-        next(new NotFoundError(`Не найден фильм с ID ${req.params.movieDbId}`));
+        next(new NotFoundError());
       } else {
         next(err);
       }
