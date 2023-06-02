@@ -7,7 +7,8 @@ const CONFLICT_ERROR_CODE = 409;
 
 // Сообщения ошибок
 const BAD_REQUEST_ERROR_MESSAGE = 'Некорректные данные при запросе';
-const AUTH_ERROR_MESSAGE = 'Необходима авторизация';
+const AUTH_ERROR_MESSAGE = 'Проблемы с авторизацией';
+const AUTH_ERROR_LOGIN_MESSAGE = 'Неправильные почта или пароль';
 const FORBIDDEN_ERROR_MESSAGE = 'Отказано в доступе';
 const NOT_FOUND_ERROR_MESSAGE = 'Данные с таким ID не найдены';
 const CONFLICT_ERROR_MESSAGE = 'Email должен быть уникальным';
@@ -36,6 +37,7 @@ module.exports = {
   CONFLICT_ERROR_CODE,
   BAD_REQUEST_ERROR_MESSAGE,
   AUTH_ERROR_MESSAGE,
+  AUTH_ERROR_LOGIN_MESSAGE,
   FORBIDDEN_ERROR_MESSAGE,
   NOT_FOUND_ERROR_MESSAGE,
   CONFLICT_ERROR_MESSAGE,

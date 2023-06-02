@@ -1,5 +1,6 @@
 const { checkToken } = require('../utils/token');
 const AuthError = require('../errors/auth-err');
+const AUTH_ERROR_MESSAGE = require('../utils/constants');
 
 module.exports = (req, res, next) => {
   let payload;
@@ -9,14 +10,14 @@ module.exports = (req, res, next) => {
 
     // убеждаемся, что он есть
     if (!jwt) {
-      throw new AuthError();
+      throw new AuthError(AUTH_ERROR_MESSAGE);
     }
 
     // верифицируем токен
     payload = checkToken(jwt);
   } catch (err) {
     // отправим ошибку, если не получилось
-    return next(new AuthError());
+    return next(new AuthError(AUTH_ERROR_MESSAGE));
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса
