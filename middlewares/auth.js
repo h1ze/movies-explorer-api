@@ -1,6 +1,6 @@
 const { checkToken } = require('../utils/token');
 const AuthError = require('../errors/auth-err');
-const AUTH_ERROR_MESSAGE = require('../utils/constants');
+const { AUTH_ERROR_MESSAGE } = require('../utils/constants');
 
 module.exports = (req, res, next) => {
   let payload;
