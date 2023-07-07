@@ -9,6 +9,7 @@ const corsOptions = {
       callback(new ForbiddenError());
     }
   },
+  credentials: true,
 };
 
 module.exports = corsOptions;

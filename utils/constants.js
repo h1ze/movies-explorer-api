@@ -22,6 +22,8 @@ const ALLOWED_CORS = [
   'https://burnov.nomoredomains.monster',
   'http://localhost:3000',
   'https://localhost:3000',
+  'http://localhost:3001',
+  'https://localhost:3001',
   'http://158.160.24.95',
   'https://158.160.24.95',
 ];
