@@ -18,14 +18,14 @@ const REG_EXP = /^https?:\/\/(www\.)?([a-z0-9_-]+)(\.[a-z0-9_-]+).+/i;
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const ALLOWED_CORS = [
-  'http://burnov.nomoredomains.monster',
-  'https://burnov.nomoredomains.monster',
+  'http://burnovdiplom.nomoredomains.rocksr',
+  'https://burnovdiplom.nomoredomains.rocks',
   'http://localhost:3000',
   'https://localhost:3000',
   'http://localhost:3001',
   'https://localhost:3001',
-  'http://158.160.24.95',
-  'https://158.160.24.95',
+  'http://51.250.20.59',
+  'https://51.250.20.59',
 ];
 
 // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)
