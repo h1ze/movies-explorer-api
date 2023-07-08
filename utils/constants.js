@@ -18,7 +18,7 @@ const REG_EXP = /^https?:\/\/(www\.)?([a-z0-9_-]+)(\.[a-z0-9_-]+).+/i;
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const ALLOWED_CORS = [
-  'http://burnovdiplom.nomoredomains.rocksr',
+  'http://burnovdiplom.nomoredomains.rocks',
   'https://burnovdiplom.nomoredomains.rocks',
   'http://localhost:3000',
   'https://localhost:3000',
